@@ -1,0 +1,106 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Répertoire patients UF 2352</title>
+    <style>
+      h1{
+        font-size: 20px !important;
+      }
+      .internBox{
+        background-color: #788BBE;
+        font-weight: bold;
+        font-size:20px;
+        color:#04052E;
+        text-align:center;
+        border-top-left-radius:5px;
+        border-bottom-left-radius:5px;
+      }
+      .externBox{
+        background-color: #C68D8D;
+        font-weight: bold;
+        font-size:20px;
+        color:#04052E;
+        text-align:center;
+        border-top-right-radius:5px;
+        border-bottom-right-radius:5px;
+      }
+      .blueArea{
+        background-color:#788BBE;
+        border-radius : 10px;
+        width: 94vw;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align:center;
+      }
+      .roseArea{
+        background-color:#C68D8D;
+        border-radius : 10px;
+        width: 94vw;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align:center;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Répertoire patients UF 0000</h1>
+    </header>
+
+    <main>
+      <table class="w-100">
+        <tr style="height:9vh">
+          <td class="internBox">
+            Transfert interne
+          </td>
+          <td class="externBox">
+            Transfert externe
+          </td>
+        </tr>
+      </table>
+
+      <table class="blueArea">
+        <tr style="height:6vh">
+          <td class="whiteAreaTitle" style="width:50%">
+            Chambre 000P
+          </td>
+          <td>
+              <img src="/inc/img/bottomArrow.svg">
+          </td>
+          <td style="text-align:right">
+            <img src="/inc/img/smallRightArrow.svg">
+          </td>
+        </tr>
+      </table>
+
+      <table class="blueArea">
+        <tr style="height:6vh">
+          <td class="whiteAreaTitle" style="width:50%">
+            Chambre 000P
+          </td>
+          <td>
+              <img src="/inc/img/topArrow.svg">
+          </td>
+          <td style="text-align:right">
+            <img src="/inc/img/smallRightArrow.svg">
+          </td>
+        </tr>
+      </table>
+
+      <table class="roseArea">
+        <tr style="height:6vh">
+          <td class="whiteAreaTitle" style="width:50%">
+            Chambre 000P
+          </td>
+          <td style="text-align:right">
+            <img src="/inc/img/smallRightArrow.svg">
+          </td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>

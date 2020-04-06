@@ -1,0 +1,120 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Patient transfert interne</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: 15vh 15vh 15vh 15vh 15vh 15vh;
+            background-color: #cecece;
+            align-items: center;
+        }
+        .TexteLeger{
+            display: block;
+            height: 10vh;
+            font-size: 8vw;
+            color: #cecece;
+            text-align: center;
+        }
+        .GreenButton{
+            background-color:#57C952;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .TexteLegerVert{
+            display: block;
+            font-weight: bold;
+            height: 10vh;
+            font-size: 8vw;
+            color: #1d521b;
+            text-align: center;
+        }
+        .TexteLegerRouge{
+            display: block;
+            font-weight: bold;
+            height: 10vh;
+            font-size: 8vw;
+            color: #5e1f1f;
+            text-align: center;
+        }
+        .Texte{
+            color: #555353;
+            font-weight: bold;
+        }
+        .Gros{
+            font-size: 8vw;
+            text-align: left;
+        }
+        .Fin{
+            font-size: 6vw;
+            text-align: center;
+        }
+        .Checkbox1{
+            background-color:#57C952;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .Checkbox2{
+            background-color:#D31C1C;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        {% include "../Interface/inc/backArrow.html" %}
+        <h1>Patient transfert interne</h1>
+</header>
+<main style="background-color: #cecece;">
+        <div class="grid">
+            <div class="Checkbox1">
+                <input type="checkbox" id="transfered">
+                <label for="transfered">
+                    <div class="TexteLegerVert">Patient transféré</div></label>
+            </div>
+                <div class="Checkbox2">
+                    <input type="checkbox" id="transfered">
+                <label for="transfered">
+                    <div class="TexteLegerRouge">Supprimer transfert</div></label>
+                </div>
+                <div class="whiteArea">
+                    <div class="TexteLeger"># de chambre</div>
+                </div>
+                <div class="Texte">
+                    <div class="Gros">Patient de l'unité:</div>
+                    <div class="Fin">Nom complet de l'UF</div>
+                </div>
+                <div class="Texte">
+                    <table style="width: 95vw;">
+                        <tr>
+                            <td>
+                                <div class="Gros">Doit être transféré vers une "full réa"</div>
+                            </td>
+                            <td>
+                                <svg style="font-size: 12vh;" class="bi bi-shift-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M7.27 2.047a1 1 0 011.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v3a1 1 0 01-1 1h-5a1 1 0 01-1-1v-3H1.654C.78 10.5.326 9.455.924 8.816L7.27 2.047z" clip-rule="evenodd"/>
+                                </svg>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="GreenButton">
+                    <a href="https://www.boredpanda.com/cute-kittens/?utm_source=google&utm_medium=organic&utm_campaign=organic">
+                    <div class="TexteLegerVert">Confirmer</div>
+                    </a>
+                </div>
+        </div>
+{% include "../Interface/inc/bottomScripts.html" %}
+</body>
+</html>

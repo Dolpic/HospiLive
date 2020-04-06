@@ -1,0 +1,100 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+  </head>
+  <body>
+    <header>
+        {% include "../Interface/inc/backArrow.html" %}
+        <h1>UF # et Nom complet</h1>
+        <style>
+            #numberAvailable{
+                color: var(--headercolor);
+                font-size: 85px;
+            }
+
+            .pDispo{
+                color: var(--headercolor);
+                position: relative;
+                top: 4px;
+                margin-left: 10px;
+            }
+
+            .tableLegendes tr{
+                height: 40px;
+            }
+        </style>
+        <script>
+            function FreeBedsCount(parsed){
+                console.log(parsed)
+                $("#numberAvailable").text(parsed.FreeBeds)
+                $("#phoneNumber").text(parsed.Phone)
+            }
+            MNfreebeds($_GET('UF'))
+        </script>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <td class="text-right w-50" >
+                    <p id="numberAvailable">XX</p>
+                </td>
+                <td>
+                    <span class="pDispo">Places</span><br>
+                    <span class="pDispo">disponibles</span>
+                </td>
+            </tr>
+        </table>
+        <table class="whiteArea">
+            <tr>
+                <td class="w-100">
+                    <div>
+                        <p class="whiteAreaTitle">Support technique possible</p>
+                        <table class="tableLegendes" class="mb-2">
+                            <tr id="dialyse">
+                                <td class="w-25 text-center"><img src="/inc/img/square.svg"></td>
+                                <td><p class="mb-0">Dialyse</p></td>
+                            </tr>
+                            <tr id="ECMO">
+                                <td class="w-25 text-center"><img src="/inc/img/triangle.svg"></td>
+                                <td><p class="mb-0">ECMO</p></td>
+                            </tr>
+                            <tr id="ventilInvasive">
+                                <td class="w-25 text-center"><img src="/inc/img/circle.svg"></td>
+                                <td><p class="mb-0">Ventilation invasive</p></td>
+                            </tr>
+                            <tr id="ventilNonInvasive">
+                                <td class="w-25 text-center"><img src="/inc/img/pentagone.svg"></td>
+                                <td><p class="mb-0">Ventilation non-invasive</p></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    <div class="whiteArea" >
+                        <table>
+                            <tr>
+                                <td class="w-25 text-center">
+                                    <img src="/inc/img/phone.svg">
+                                </td>
+                                <td>
+                                    <p class="whiteAreaTitle">Contact :</p>
+                                </td>
+                                <td>
+                                    <p id="phoneNumber" class="whiteAreaTitle">00000</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+  </body>
+</html>

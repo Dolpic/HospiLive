@@ -1,0 +1,147 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>UF # et Nom complet</title>
+    <style>
+      #freeBeds{
+        font-size: 9vh;
+        text-align: right;
+        color: var(--headercolor);
+        font-weight: bold;
+      }
+      .LesPlaces{
+        font-size: 3vh;
+        text-align: left;
+        color: var(--headercolor);
+        font-weight: bold;
+      }
+      .buttonMod{
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 60vw;
+        height: 38px;
+        background-color: white;
+        align-self: center;
+      }
+      .Totaux{
+        font-size: 6vh;
+        font-weight: bold;
+        text-align: center;
+      }
+      #instables1{
+        color: var(--red-warning);
+      }
+      #instables2{
+        color: var(--orange);
+      }
+      #instables3{
+        color: var(--yellow-text);
+      }
+      .UF{
+        display: grid;
+        grid-template-rows: 6vh;
+        font-size: 3vh;
+        font-weight: bold;
+        text-align: center;
+      }
+      .Numero{
+        color: var(--headercolor);
+      }
+      .patTransferables{
+        display: inline-block;
+        width: 83%;
+        height: 35px;
+        margin-left: 5%;
+      }
+    </style>
+    <script>
+      function init(){
+        getEssentialInfos($_GET("UF"), function(result){
+          if($_GET("UF") == undefined || result.Name == undefined){
+            window.location.replace("identification.html");
+          }
+
+          $("#mainTitle").text(result.Name+" ("+$_GET("UF")+")")
+          $("#freeBeds").text(result.FreeBeds)
+          $("#instables1").text(result.UnstablePatients.GLOBAL[0])
+          $("#instables2").text(result.UnstablePatients.GLOBAL[1])
+          $("#instables3").text(result.UnstablePatients.GLOBAL[2])
+          var list = result.UnstablePatients.LIST
+          for(var i=0; i<list.length; i++){
+            $("#listContainer").append(`
+              <div class="UF">
+                <a href="numeroUF.html?UF=`+list[i].Service+`">
+                  <table>
+                  <tr class="clickable">
+                    <td class="Numero">UF `+list[i].Service+`</td>
+                    <td class="instables1">`+list[i].Patients[0]+`</td>
+                    <td class="instables2">`+list[i].Patients[1]+`</td>
+                    <td class="instables3">`+list[i].Patients[2]+`</td>
+                    <td>
+                      <img src="/inc/img/smallRightArrow.svg">
+                    </td>
+                  </tr>
+                  </table>
+                </a>
+              </div>
+            `)
+          }
+        })
+      }
+    </script>
+    <body onload="init()">
+      <header>
+          {% include "../Interface/inc/backArrow.html" %}
+          <h1 id="mainTitle"></h1>
+      </header>
+      <main>
+        <a href="repertoirePatients.html">
+          <div class="whiteArea clickable" style="font-size: 5vw;">
+            <span class="whiteAreaTitle patTransferables" >
+              Vers patients transferables
+            </span>
+            <img src="/inc/img/smallRightArrow.svg">
+          </div>
+        </a>
+        <table style="height: 10vh;">
+          <tr>
+            <td id="freeBeds" class="Le12">00</td>
+            <td class="LesPlaces">Places <br/>disponibles</td>
+          </tr>
+        </table>
+        
+        <!--<div class="buttonMod">
+          <a href="https://en.wikipedia.org/wiki/DALT">
+            <div class="blueTitle">
+              Modifier
+            </div>
+          </a>
+        </div>-->
+        <div class="whiteArea">
+          <div class="blueTitle" style="font-size: 4vh;">Patients instables</div>
+          <div class="blueTitleBorder"></div>
+          <table>
+            <tr class="Totaux">
+              <td>
+                <div id="instables1">000</div>
+              </td>
+              <td>
+                <div id="instables2">000</div>
+              </td>
+              <td>
+                <div id="instables3">000</div>
+              </td>
+            </tr>
+          </table>
+        </div>  
+        
+        <div id="listContainer" class="whiteArea">
+
+        </div>
+      </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+    </body>
+  </html>

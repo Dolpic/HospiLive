@@ -1,0 +1,168 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../Interface/inc/head.html" %}
+
+    <title>Modifier Patient | Transfert externe</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: 6vh 15vh 15vh 12vh 20vh 20 vh25vh;
+            background-color: #cecece;
+            align-items: center;
+        }
+        .MultipleChoice{
+            display: grid;
+            grid-template-columns: 50vw 20vw;
+            grid-template-rows:50% 50%;
+            align-items: center;
+        }
+        .TexteLeger{
+            display: block;
+            height: 10vh;
+            font-size: 8vw;
+            color: #cecece;
+            text-align: center;
+        }
+        .GreenButton{
+            background-color:#57C952;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .TexteLegerVert{
+            display: block;
+            font-weight: bold;
+            height: 10vh;
+            font-size: 8vw;
+            color: #1d521b;
+            text-align: center;
+        }
+        .TexteLegerRouge{
+            display: block;
+            font-weight: bold;
+            height: 10vh;
+            font-size: 8vw;
+            color: #5e1f1f;
+            text-align: center;
+        }
+        .Texte{
+            color: #555353;
+            font-weight: bold;
+        }
+        .Gros{
+            font-size: 6vw;
+            text-align: left;
+        }
+        .Fin{
+            background-color:white;
+            border-radius : 10px;
+            width: 43vw;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid black;
+            font-size: 4vw;
+            text-align:center;
+        }
+        .Checkbox1{
+            background-color:#57C952;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .Checkbox2{
+            background-color:#D31C1C;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        {% include "../Interface/inc/backArrow.html" %}
+        <h1>Modifier Patient|externe</h1>
+</header>
+<main style="background-color: #cecece;">
+        <div class="grid">
+                <div class="Texte">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="Gros">Patient de l'unité:</div>
+                            </td>
+                            <td>
+                                <div class="Gros">Nom de l'unité</div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                </div>
+                <div class="Checkbox1">
+                    <input type="checkbox" id="transfered">
+                    <label for="transfered">
+                        <div class="TexteLegerVert">Patient transféré</div></label>
+                </div>
+                    <div class="Checkbox2">
+                        <input type="checkbox" id="transfered">
+                    <label for="transfered">
+                        <div class="TexteLegerRouge">Supprimer transfert</div></label>
+                    </div>
+                <div class="whiteArea">
+                    <div class="Texte">
+                    <div class="Gros" style="margin-left: 2vw;">Chambre 347P</div></div>
+                </div>
+                
+                <div class="Texte">
+                    <table class="whiteArea" style="width: 95vw;">
+                        <thead class="blueTitle">
+                            <td style="font-size: 6vw;">Transfert possible vers:</td>
+                        </thead>
+                        <tr >
+                            <td>
+                                <div class="MultipleChoice">
+                                <div class="Fin">
+                                    Cliniques de la région</div>
+                                <div class="Fin">CHU</div>
+                                <div class="Fin">A l'étranger</div>
+                                <div class="Fin">CHG</div></div>
+                            </td>
+                        </tr>
+                            
+                    </table>
+                </div>
+                <div class="Texte">
+                    <table class="whiteArea" style="width: 95vw;">
+                        <thead class="blueTitle">
+                            <td style="font-size: 6vw;">Moyens de transport supportés</td>
+                        </thead>
+                        <tr >
+                            <td>
+                                <div class="MultipleChoice">
+                                <div class="Fin">TGV</div>
+                                <div class="Fin">Hélicoptère</div>
+                                <div class="Fin">Route</div>
+                                <div class="Fin">Avion</div></div>
+                            </td>
+                        </tr>
+                            
+                    </table>
+                </div>
+                <div class="GreenButton">
+                    <a href="https://en.wikipedia.org/wiki/The_Foundations_of_Arithmetic">
+                    <div class="TexteLegerVert">Valider modifications</div>
+                    </a>
+                </div>
+        </div>
+
+        {% include "../Interface/inc/bottomScripts.html" %}
+</body>
+</html>

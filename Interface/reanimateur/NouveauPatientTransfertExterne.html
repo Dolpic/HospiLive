@@ -1,0 +1,129 @@
+{% set TO_ROOT = "/" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Nouveau Patient | Transfert externe</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: 5vh 15vh 29vh 29vh 16vh;
+            background-color: #cecece;
+            align-items: center;
+        }
+        .MultipleChoice{
+            display: grid;
+            grid-template-columns: 50vw 50vw;
+            grid-template-rows:6vh 11vh 11vh;
+            margin-left: 0.5vw;
+        }
+        .TexteLeger{
+            display: block;
+            height: 10vh;
+            font-size: 8vw;
+            color: #cecece;
+            text-align: center;
+        }
+        .GreenButton{
+            background-color:#57C952;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .TexteLegerVert{
+            display: block;
+            font-weight: bold;
+            height: 10vh;
+            font-size: 8vw;
+            color: #1d521b;
+            text-align: center;
+        }
+        .Texte{
+            color: #555353;
+            font-weight: bold;
+        }
+        .Gros{
+            font-size: 6vw;
+            text-align: left;
+        }
+        .Fin{
+            height: 10vh;
+            color: #555353;
+            font-weight: bold;
+            background-color:white;
+            border-radius : 10px;
+            width: 43vw;
+            line-height: 9vh;
+            border: 1px solid black;
+            font-size: 6vw;
+            text-align: center;
+            word-wrap: break-word;
+        }
+        .blueTitleHead{
+            font-weight: bold;
+            text-align: left;
+            margin-left: 1vw;
+            font-size: 6vw;
+            color: var(--headercolor);
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        {% include "../Interface/inc/backArrow.html" %}
+        <h1>Nouveau Patient|externe</h1>
+</header>
+<main style="background-color: #cecece;">
+        <div class="grid">
+                <div class="Texte">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="Gros">Patient de l'unité:</div>
+                            </td>
+                            <td>
+                                <div class="Gros">Nom de l'unité</div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                </div>
+                <div class="whiteArea">
+                    <div class="TexteLeger"># de chambre</div>
+                </div>
+                <div class="whiteArea">
+                    <div class="MultipleChoice">
+                        <div class="blueTitleHead">Transfert possible vers:</div>
+                        <div class="Fin" style="line-height: initial;">Cliniques de la région</div>
+                        <div class="Fin">CHU</div>
+                        <div class="Fin">A l'étranger</div>
+                        <div class="Fin">CHG</div>
+                            
+                    </div>
+                            
+                </div>
+                <div class="whiteArea">
+                    <div class="MultipleChoice">
+                        <div class="blueTitleHead">Moyens de transport supportés</div>
+                        <div class="Fin">TGV</div>
+                        <div class="Fin">Helicoptère</div>
+                        <div class="Fin">Route</div>
+                        <div class="Fin">Avion</div>
+                            
+                    </div>
+                            
+                </div>
+                <div class="GreenButton">
+                    <a href="https://en.wikipedia.org/wiki/Arthroceras_fulvicorne">
+                    <div class="TexteLegerVert">Ajouter</div>
+                    </a>
+                </div>
+        </div>
+        {% include "../Interface/inc/bottomScripts.html" %}
+</body>
+</html>

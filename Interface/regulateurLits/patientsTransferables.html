@@ -1,0 +1,114 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Patients transférables</title>
+    <style>
+      .numberTransfer {
+         text-align: right;
+         font-weight:bold;
+         width:30%;
+         font-size:50px;
+         padding-right:5px;
+      }
+      .toTransfer{
+        text-align: left;
+        font-weight:bold;
+        width:70%;
+        font-size: 20px;
+        padding-left:5px;
+      }
+      .hourUpdate{
+        text-align: center;
+        font-weight:bold;
+      }
+      .blueSmallNumber{
+        color: #788BBE;
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+      }
+      .roseSmallNumber{
+        color: #C68D8D;
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+      }
+      .serviceNumber{
+        color: #04052E;
+        font-weight: bold;
+        border-right:1px solid black;
+        text-align: center;
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Patients transférables</h1>
+    </header>
+
+    <main>
+      <table class="whiteArea">
+        <tr style="color: #788BBE">
+          <td class="numberTransfer">
+            000
+          </td>
+          <td class="toTransfer">
+            Patients en attente de transfert interne
+          </td>
+        </tr>
+        <tr style="color:#C68D8D;">
+          <td class="numberTransfer">
+            000
+          </td>
+          <td class="toTransfer">
+            Patients en attente de transfert externe
+          </td>
+        </tr>
+        <tr>
+          <td class="hourUpdate" colspan="3">
+            A 00h00
+          </td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td style="text-align: right">
+            <img src="/inc/img/bottomArrow.svg" style="position:relative; left:-5vw">
+          </td>
+          <td style="text-align: left">
+            <img src="/inc/img/topArrow.svg" style="position:relative; right:-10vw">
+          </td>
+        </tr>
+      </table>
+
+      <a href="./repoTransferables.html">
+        <table class="whiteArea">
+          <tr style="height:10vh">
+            <td style="width:35%">
+              <div class="serviceNumber">
+                UF 0000
+              </div>
+            </td>
+            <td class="blueSmallNumber">
+              00
+            </td>
+            <td class="blueSmallNumber">
+              00
+            </td>
+            <td class="roseSmallNumber">
+              00
+            </td>
+            <td style="text-align:right">
+              <img src="/inc/img/smallRightArrow.svg">
+            </td>
+          </tr>
+        </table>
+      </a>
+    </main>
+  </body>
+</html>

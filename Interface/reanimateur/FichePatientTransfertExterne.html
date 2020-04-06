@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link rel="stylesheet" href="../inc/global.css">
+<link rel="icon" type="image/png" href="../inc/img/favicon.png" />
+<link rel="apple-touch-icon" type="image/png" href="../inc/img/favicon.png" />
+
+<script type="text/javascript" src="../inc/js/script.js"></script>
+
+
+
+    <title>Nouveau Patient | Transfert externe</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: 100vw;
+            grid-template-rows: 6vh 12vh 20vh 20 vh25vh;
+            background-color: #cecece;
+            align-items: center;
+        }
+        .MultipleChoice{
+            display: grid;
+            grid-template-columns: 50vw 20vw;
+            grid-template-rows:50% 50%;
+            align-items: center;
+        }
+        .TexteLeger{
+            display: block;
+            height: 10vh;
+            font-size: 8vw;
+            color: #cecece;
+            text-align: center;
+        }
+        .GreenButton{
+            background-color:#57C952;
+            border-radius : 20px;
+            width: 94vw;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .TexteLegerVert{
+            display: block;
+            font-weight: bold;
+            height: 10vh;
+            font-size: 8vw;
+            color: #1d521b;
+            text-align: center;
+        }
+        .Texte{
+            color: #555353;
+            font-weight: bold;
+        }
+        .Gros{
+            font-size: 6vw;
+            text-align: left;
+        }
+        .Fin{
+            background-color:white;
+            border-radius : 10px;
+            width: 43vw;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid black;
+            font-size: 4vw;
+            text-align:center;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <a class="back-button" onclick="history.back()">
+            <svg class="back-button-svg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
+        </a>
+        <h1>Nouveau Patient|externe</h1>
+</header>
+<main style="background-color: #cecece;">
+        <div class="grid">
+                <div class="Texte">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="Gros">Patient de l'unité:</div>
+                            </td>
+                            <td>
+                                <div class="Gros">Nom de l'unité</div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                </div>
+                <div class="whiteArea">
+                    <div class="TexteLeger"># de chambre</div>
+                </div>
+                
+                <div class="Texte">
+                    <table class="whiteArea" style="width: 95vw;">
+                        <thead class="blueTitle">
+                            <td style="font-size: 6vw;">Transfert possible vers:</td>
+                        </thead>
+                        <tr >
+                            <td>
+                                <div class="MultipleChoice">
+                                <div class="Fin">
+                                    Cliniques de la région</div>
+                                <div class="Fin">CHU</div>
+                                <div class="Fin">A l'étranger</div>
+                                <div class="Fin">CHG</div></div>
+                            </td>
+                        </tr>
+                            
+                    </table>
+                </div>
+                <div class="Texte">
+                    <table class="whiteArea" style="width: 95vw;">
+                        <thead class="blueTitle">
+                            <td style="font-size: 6vw;">Moyens de transport supportés</td>
+                        </thead>
+                        <tr >
+                            <td>
+                                <div class="MultipleChoice">
+                                <div class="Fin">TGV</div>
+                                <div class="Fin">Hélicoptère</div>
+                                <div class="Fin">Route</div>
+                                <div class="Fin">Avion</div></div>
+                            </td>
+                        </tr>
+                            
+                    </table>
+                </div>
+                <div class="GreenButton">
+                    <a href="https://en.wikipedia.org/wiki/Arthroceras_fulvicorne">
+                    <div class="TexteLegerVert">Ajouter</div>
+                    </a>
+                </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

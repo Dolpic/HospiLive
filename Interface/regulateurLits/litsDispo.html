@@ -1,0 +1,72 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Lits disponibles</title>
+    <style>
+      
+      #Sum{
+        font-weight: bold;
+        vertical-align: bottom;
+        color: var(--headercolor);
+        text-align: center;
+        font-size: 11vh;
+      }
+      #Time{
+        font-weight: bold;
+        vertical-align: top;
+        color: var(--headercolor);
+        text-align: center;
+        font-size: 4vh;
+      }
+      .grille{
+        display: grid;
+        font-size: 6vh;
+        font-weight: bold;
+        color: var(--headercolor);
+        justify-items: center;
+        grid-template-columns: 70% 1% 30%;
+        grid-template-rows: 10vh;
+      }
+    </style>
+    <script>
+      function main(){
+        RLfreebeds(function(result){
+          var currentdate = new Date(); 
+
+          $("#Sum").text(result.GLOBAL)
+          $("#Time").text(currentdate.getHours() + "H" + currentdate.getMinutes())
+
+          for(var i=0; i<result.LIST.length; i++){
+
+            console.log(result.LIST[i])
+            $("main").append(`
+              <div class="whiteArea">
+                <div class="grille">
+                  <div>`+result.LIST[i].Service+`</div>
+                  <div></div>
+                  <div>`+result.LIST[i].FreeBeds+`</div>
+                </div>
+              </div>
+            `)
+          }
+        })
+      }
+    </script>
+  </head>
+  <body onload="main()">
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Lits disponibles</h1>
+    </header>
+    <main>
+        <div class="whiteArea" style="align-content: center;">
+          <div id="Sum">00</div>
+          <div id="Time">A 00h00</div>
+        </div>
+        <div style="margin-bottom: 4vh;"></div>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+    </body>
+</html>

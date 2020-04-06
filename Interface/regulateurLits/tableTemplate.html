@@ -1,0 +1,100 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Patients instables</title>
+    <style>
+      .table-service-header{
+        margin-bottom:8px;
+      }
+      .table-service-header .total-number{
+        font-size: 5vh; 
+        line-height: 7vh;
+        font-weight: bold;
+      }
+      .table-service-header .update-time{
+        line-height: 3vh;
+      }
+      #instable-patients {
+        line-height: 10vh;
+        font-size: 4vh;
+        cursor:pointer;
+      }
+      #instable-patients .instables1 {
+        color: var(--red-warning);
+        border-left: solid;
+        border-width: 1px;
+        border-left-color: grey; 
+      }
+      #total-unstable1{
+        color: var(--red-warning); 
+      }
+      #instable-patients .instables2, #total-unstable2 {
+        color: var(--orange);
+      }
+      #instable-patients .instables3, #total-unstable3 {
+        color: var(--yellow-text);
+      }
+      .instables1, .instables2, .instables3{
+        text-align: center;
+      }
+    </style>
+    <script type="text/javascript">
+      RLunstablepatients()
+      function PatientsInstables(PatientsInstables){
+        size = PatientsInstables.LIST.length;
+        $("#total-unstable1").text(PatientsInstables.GLOBAL[0])
+        $("#total-unstable2").text(PatientsInstables.GLOBAL[1])
+        $("#total-unstable3").text(PatientsInstables.GLOBAL[2])
+        var currentdate = new Date(); 
+        $(".update-time").text("A "+currentdate.getHours() + "H" + currentdate.getMinutes())
+        for (let i = 0; i < size; i++){
+          $("#template-instable-patients").children("th").text("UF " + PatientsInstables.LIST[i].Service)
+          $("#template-instable-patients").children("td").eq(0).text(PatientsInstables.LIST[i].Patients[0])
+          $("#template-instable-patients").children("td").eq(1).text(PatientsInstables.LIST[i].Patients[1])
+          $("#template-instable-patients").children("td").eq(2).text(PatientsInstables.LIST[i].Patients[2])
+          template = $("#template-instable-patients").clone();
+          template.attr("style", "")
+          template.attr("class", "clickable")
+          template.attr("onclick", "window.location.href=" + "'PatientsInstablesService.html?Service=" + PatientsInstables.LIST[i].Service + "'")
+          template.attr("id", "")
+          $("tbody").append(template)
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Patients instables</h1>
+    </header>
+    <main>
+        <div class="whiteArea">
+          <div class="table-service-header text-center container-fluid">
+            <div class="row">
+              <div class="total-number col" id="total-unstable1"></div>
+              <div class="total-number col" id="total-unstable2"></div>
+              <div class="total-number col" id="total-unstable3"></div>
+            </div>
+            <div class="update-time">A 00h00</div>
+          </div>
+        </div>
+        <hr/>
+        <div class="whiteArea">
+          <table class="table" id="instable-patients">
+              <tbody>
+                  <tr style="display: none" id="template-instable-patients">
+                      <th scope="row"></th>
+                      <td class="instables1"></td>
+                      <td class="instables2"></td>
+                      <td class="instables3"></td>
+                      <td><img src="/inc/img/smallRightArrow.svg"></td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+    </body>
+</html>

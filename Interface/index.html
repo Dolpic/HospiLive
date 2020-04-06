@@ -1,0 +1,87 @@
+{% set TO_ROOT = "/" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>HospiLive</title>
+    <style>
+      .regArea{
+        height: 20vh;
+        margin-top: 5vh;
+        background-color:white;
+        border-radius : 3vh;
+        border: 3px solid #8C5459;
+        width: 94vw;
+        margin-bottom: 5vh;
+        line-height: 20vh;
+        text-align: center;
+        font-size: 6vw;
+        font-weight: bold;
+      }
+      .regArea a{
+        color: #8C5459;
+      }
+      .reaArea{
+        height: 20vh;
+        margin-top: 5vh;
+        background-color:white;
+        border-radius : 3vh;
+        border: 3px solid #5E778C;
+        width: 94vw;
+        margin-bottom: 5vh;
+        line-height: 20vh;
+        text-align: center;
+        font-size: 6vw;
+        font-weight: bold;
+      }
+      .reaArea a{
+        color: #5E778C;
+        width: 100%;
+        display: inline-block;
+      }
+      .nnReaArea{
+        height: 20vh;
+        margin-top: 5vh;
+        background-color:white;
+        border-radius : 3vh;
+        border: 3px solid #D8B911;
+        width: 94vw;
+        margin-bottom: 5vh;
+        line-height: 20vh;
+        text-align: center;
+        font-size: 6vw;
+        font-weight: bold;
+      }
+      .nnReaArea a{
+        color: #D8B911;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Je suis..</h1>
+    </header>
+    <main>
+      <div class="regArea clickable">
+        <a href="regulateurLits/regulateurLits.html">
+          Régulateur de lits
+        </a>
+      </div>
+      <div class="reaArea clickable">
+        <a class="col-sm" href="reanimateur/identification.html">
+          Médecin réanimateur
+        </a>
+      </div>
+      <div class="nnReaArea clickable">
+        <a class="col-sm" href="nonReanimateur/nonReanimateur.html">
+          Médecin non réanimateur
+        </a>
+      </div>
+      <div>
+        <img style="width:100vw; position:absolute;right:0;top:85vh;" src="inc/img/icon_first_page.png"><!--CHANGER LE SLASH-->
+      </div>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+    </body>
+</html>

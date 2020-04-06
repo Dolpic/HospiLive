@@ -1,0 +1,123 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      label{
+        margin-left:5vw;
+        margin-right:2vw;
+      }
+      input{
+        width:50%;
+      }
+      .white-grid{
+        border-radius: 15px;
+      }
+      .white-grid td{
+        width: 44%;
+        text-align:center;
+        font-size:30px;
+        font-weight:bold;
+      }
+      .white-grid a{
+        color:black;
+      }
+      .rooms{
+        width: 100%;
+      }
+      .searchBar{
+        font-size:25px;
+      }
+      .whiteArea{
+        padding: 2px;
+      }
+      .whiteArea table{
+        height: 60px;
+      }
+    </style>
+    <script type="text/javascript">
+      function inputChanged(){
+        entry = $("#searchBarInput").val();
+        MNsearchpatient(entry);
+      }
+
+      function addResultsPatientsRepertories(results){
+        console.log(results)
+        $(".unit-room").children().remove();
+        results.Patients.forEach(function(chamber){
+          $("#chamber-template td").eq(1).text("Chambre " + chamber.Room);
+          $("#chamber-template td").eq(0).attr("onclick","document.location.href='editPatient.html?Room=" + chamber.Room + "'")
+          switch(chamber.ConditionCode){
+            case 1:
+              $("#chamber-template .state").attr("src","../inc/img/stateRed.svg")
+              break;
+            case 2:
+              $("#chamber-template .state").attr("src","../inc/img/stateOrange.svg")
+              break;
+            case 3:
+              $("#chamber-template .state").attr("src","../inc/img/stateYellow.svg")
+              break;
+            default:
+              break;
+          }
+
+          template = $("#chamber-template").clone();
+          template.attr("style","")
+          template.attr("id", "")
+          template.attr("class", "unit-room")
+          $(".rooms").append(template);
+
+        })
+      }
+    </script>
+    {% include "../Interface/inc/head.html" %}
+    <title>Patients répertoriés</title>
+  </head>
+  <body onload="inputChanged()">
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Patients répertoriés</h1>
+    </header>
+    <main>
+      
+      <div class="whiteArea clickable">
+        <a href="./editPatient.html">
+          <table>
+            <tr>
+              <td>
+                <span class="whiteAreaTitle">Ajouter un patient</span>
+              </td>
+              <td>
+                <img src="/inc/img/plus.svg">
+              </td>
+            </tr>
+          </table>
+        </a>
+      </div>
+
+      <br>
+
+      <div class="whiteArea">
+        <p class="searchBar">
+          <span class="whiteAreaTitle"><b>Modifier un patient</b></span><br>
+          <label># UF</label><input id="searchBarInput" onkeyup="inputChanged()" onchange="inputChanged()" type="number" pattern="[0-9]*" inputmode="numeric" placeholder="1234">
+        </p>
+      </div>
+
+      <table class="rooms">
+        <tr id="chamber-template" style="display: none">
+          <td>
+            <table class="white-grid whiteArea clickable">
+              <tr>
+                <td onclick="document.href.location='#'">Chambre 0000</td>
+                <td><img class="state" src="../inc/img/stateRed.svg"></td>
+                <td><img src="../inc/img/smallRightArrow.svg"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+  </body>
+</html>

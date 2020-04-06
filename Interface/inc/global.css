@@ -1,0 +1,123 @@
+    :root{
+      --linktext: white;
+      --roomtext: #04052E;
+      --headercolor : #04052E;
+      --headerheight : 12vw;
+      --headertextheight : 7vw;
+      --headerbackbuttonheight : 5vw;
+
+      --backgroundcolor : #CECECE;
+      --red-warning : #D31C1C;
+      --orange : #FF7600;
+      --yellow-text:  #DCE332;
+      --yellow-dot : #F5FF00;
+    }
+
+    *{
+      box-sizing: border-box;
+      overscroll-behavior: none;
+    }
+
+    header {
+      position : fixed;
+      text-align: center;
+      width: 100vw;
+      background-color: var(--headercolor);
+      color:white;
+      z-index: 99;
+      height: var(--headerheight);
+    }
+    header h1{
+      font-size: var(--headertextheight);
+      line-height: var(--headerheight);
+    }
+    header .back-button{
+      color:--linktext;
+      position: absolute;
+      left: 2vw;
+      line-height: var(--headerheight);
+      cursor: pointer;
+    }
+    header .back-button .back-button-svg{
+      width: var(--headerbackbuttonheight);
+      height: var(--headerbackbuttonheight);
+      fill :var(--linktext);
+    }
+
+    body {
+      background-color: var(--backgroundcolor);
+    }
+    main {
+      position: absolute;
+      padding: 3vw;
+      padding-top: calc(var(--headerheight) + 5px);
+      background-color: #cecece;
+      width: 100vw;
+      height: 100vh;
+    }
+
+
+    table{
+      width: 100%;
+    }
+
+    #firstpage-row {
+      padding-top: 5vh;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+    a, a:hover, a:active {
+      text-decoration: none;
+      outline: none;
+      /*border : none;*/
+    }
+
+    #firstpage-row .col-sm {
+      border-radius: 10px;
+      font-size: 5vw;
+      font-weight:bold;
+      line-height: 30vw;
+      text-align: center;
+      margin-bottom: 2vw;
+    }
+    #firstpage-row .col-sm:hover {
+      display: block;
+      color : var(--linktext);
+      outline: none;
+    }
+
+    .whiteArea{
+      background-color:white;
+      border-radius : 10px;
+      width: 94vw;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      /*border: 1px solid gray;*/
+    }
+    .whiteAreaTitle{
+      margin: 10px;
+      color: var(--headercolor);
+      font-weight: bold;
+    }
+
+    .blueTitle{
+      height: 5vh;
+      color: var(--roomtext);
+      text-align: center;
+      font-size: 150%;
+      font-weight: bold;
+    }
+    .blueTitleBorder{
+      margin: auto;
+      width: 80%;
+      border-bottom: 3px solid #04052E;
+      margin-top: 6px;
+      margin-bottom: 12px;
+    }
+
+    .clickable{
+      cursor: pointer;
+    }
+    .clickable:active{
+      box-shadow: 0px 0px 5px inset;
+    }

@@ -1,0 +1,89 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Transferts patients</title>
+    <style>
+        .whiteArea button{
+            border:none;
+            border-radius: 10px;
+            padding:10px;
+            width:94%;
+            margin:2%;
+        }
+
+        #transInterne{
+            background-color: #798ebc;
+        }
+        #transExterne{
+            background-color: #c8acb7;
+        }
+        .listItem{
+            background-color: #798ebc;
+            border-radius: 10px;
+            margin:5px;
+        }
+        .listItem table{
+            height: 60px;
+        }
+        .listItem span{
+            margin-left: 10%;
+        }
+    </style>
+    <script>
+        function addElementToItemList(roomNumber, link){
+            $("#itemList").append(`
+                <div class="listItem">
+                    <table>
+                        <tr>
+                            <td><span><b>Chambre `+roomNumber+`</b></span></td>
+                            <td><img src="/inc/img/topArrow.svg"></td>
+                            <td><a href=`+link+`><img src="/inc/img/smallRightArrow.svg"></a></td>
+                        </tr>
+                    </table>
+                </div>
+            `)
+        }
+    </script>
+  </head>
+  <body>
+    <header>
+        {% include "../Interface/inc/backArrow.html" %}
+        <h1>Transferts patients UF XXX</h1>
+    </header>
+    <main>
+        <table class="whiteArea">
+            <tr>
+                <td colspan="2">
+                    <span class="whiteAreaTitle">Ajouter nouveau patient</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="transInterne"><b>Transfert interne</b></button>
+                </td>
+                <td> 
+                    <button id="transExterne"><b>Transfert externe</b></button>
+                </td>
+            </tr>
+        </table>
+
+        <p class="blueTitle">Consulter / Modifier un patient</p>
+        <div class="blueTitleBorder"></div>
+
+        <div id="itemList">
+            <div class="listItem">
+                <table>
+                    <tr>
+                        <td><span><b>Chambre XXXP</b></span></td>
+                        <td><img src="/inc/img/topArrow.svg"></td>
+                        <td><img src="/inc/img/smallRightArrow.svg"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+  </body>
+</html>

@@ -1,0 +1,263 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <style>
+      input{
+        border-radius: 5px;
+        padding:5px;
+        width: 140px;
+      }
+      input[type=number]{
+        width: 95%;
+        margin: 2.5%;
+      }
+      .suppTechnique tr{
+        height:45px;
+      }
+      #buttonRea{
+        background-color: #A5EAA7;
+        border-radius: 20px;
+        height: 40px;
+        margin-top:20px;
+        margin-bottom: 20px;
+        text-align: center;
+        padding-top:7px;
+      }
+      .divWhiteArea{
+        width:98%;
+        height: 90px;
+        padding: 10px;
+      }
+      .stateDiv{
+        width: 90%;
+        margin: auto;
+        margin-bottom: 2px;
+        padding: 8px;
+        border: 3px solid white;
+        cursor:pointer;
+      }
+      .stateDiv span{
+        margin-left: 20px;
+      }
+      .chosenState{
+        border-radius: 14px;
+        border: 3px inset gray;
+      }
+      .button{
+        background-color: #A5EAA7;
+        border-radius: 10px;
+        border-color: #A5EAA7;
+        height: 50px;
+        font-size: 28px;
+      }
+    </style>
+    <script>
+      selectedState = 1
+      equipment = []
+
+      function init(){
+        if($_GET('Room') != undefined){
+          MNmodifypatientopen($_GET('Room'), function(result){
+            console.log(result)
+
+            $("#roomNb").val($_GET('Room'))
+            $("#UFNb").val(result.Service)
+            $("#O2").val(result.O2)
+            $("#SatO2").val(result.SatO2)
+            $("#hasVirusCheckbox").prop("checked", result.HasCovid=='1')
+            selectState(result.ConditionCode)
+            setEquipment(result.Equipment)
+          })
+        }else{
+          selectState("1")
+          setEquipment([])
+        }
+      }
+
+      function selectState(stateNumber){
+        $("#state1").removeClass("chosenState")
+        $("#state2").removeClass("chosenState")
+        $("#state3").removeClass("chosenState")
+        $("#state"+stateNumber).addClass("chosenState")
+        selectedState = stateNumber
+      }
+
+      function setEquipment(equipArray){
+        equipment = []
+        for(var i=1; i<=4; i++){
+          if(equipArray.indexOf(i) != -1){
+            $("#equip"+i).addClass("chosenState")
+            equipment.push(i)
+          }else{
+            $("#equip"+i).removeClass("chosenState")
+          }
+        }
+      }
+
+      function toggleEquipment(equipmentId){
+        $("#equip"+equipmentId).toggleClass("chosenState")
+      }
+
+      function sendData(){
+        if($_GET("Room") != undefined){
+            var data = {
+            "OldRoom"       : $_GET("Room"),
+            "NewRoom"       : $("#roomNb").val(),
+            "Service"       : $("#UFNb").val(),
+            "ConditionCode" : selectedState,
+            "HasCovid"      : ($("#hasVirusCheckbox").val()=="on"?1:0),
+            "O2"            : $("#O2").val(),
+            "SatO2"         : $("#SatO2").val(),
+            "Equipment"     : equipment
+          }
+          MNmodifypatientsave(data)
+        }else{
+          var data = {
+            "Room"          : $("#roomNb").val(),
+            "Service"       : $("#UFNb").val(),
+            "ConditionCode" : selectedState,
+            "HasCovid"      : ($("#hasVirusCheckbox").val()=="on"?1:0),
+            "O2"            : $("#O2").val(),
+            "SatO2"         : $("#SatO2").val(),
+            "Equipment"     : equipment
+          }
+          MNmodifypatientnew(data)
+        }
+        document.location.replace("patientsRepertories.html")
+      }
+
+    </script>
+  </head>
+  <body onload="init()">
+    <header>
+        {% include "../Interface/inc/backArrow.html" %}
+        <h1>Modifier Patient</h1>
+    </header>
+    <main>
+       <table>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td class="whiteAreaTitle" style="width: 35%;">chambre #</td>
+                    <td><input id="roomNb" placeholder="# de chambre"></td>
+                  </tr>
+                </table>
+              </td>
+              <td rowspan="2" class="w-25">
+                <div class="text-center">
+                  <label class="whiteAreaTitle">COVID +</label><br>
+                  <input id="hasVirusCheckbox" type="checkbox">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td class="whiteAreaTitle" style="width: 35%;"># d'UF</td>
+                    <td><input id="UFNb" placeholder="# d'UF"></td>
+                  </tr>
+                </table>
+              </td>
+           </tr>
+       </table>
+
+       <div id="buttonRea" class="w-100">
+        <span>Patient transféré en réa</span>
+       </div>
+
+       <table class="whiteArea">
+        <tr>
+          <td colspan="2"><p class="whiteAreaTitle">Gravité de l'état</span></td>
+        </tr>
+        <tr>
+          <td class="w-25">
+            <div class="stateDiv" id="state1" onclick="selectState(1)">
+              <img src="../inc/img/stateYellow.svg">
+              <span>Se dégrade, pas encore à transférer</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stateDiv" id="state2" onclick="selectState(2)">
+              <img src="../inc/img/stateOrange.svg">
+              <span>A transférer dans 1/2 journées</span></td>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stateDiv" id="state3" onclick="selectState(3)">
+              <img src="../inc/img/stateRed.svg">
+              <span>A transférer dans l'heure</span></td>
+            </div>
+          </td>
+        </tr>
+       </table>
+
+       <table>
+        <tr>
+          <td>
+            <div style="margin-right:2;" class="whiteArea divWhiteArea">
+              <span><b>Besoins O<sup>2</sup>: [L/min]</b></span> 
+              <input id="O2" type="number">
+            </div>
+          </td>
+          <td>
+            <div style="margin-left:2;" class="whiteArea divWhiteArea">
+              <span><b>Sat O<sup>2</sup> : [%]</b></span> 
+              <input id="SatO2" type="number">
+            </div>
+          </td>
+        </tr>
+       </table>
+
+       <table class="suppTechnique whiteArea">
+        <tr>
+          <td colspan="2">
+            <p class="whiteAreaTitle">Support technique nécessaire</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-25">
+            <div id="equip1" class="stateDiv" onclick="toggleEquipment('1')">
+              <img src="/inc/img/square.svg">
+              <span>Dialyse</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="equip2" class="stateDiv" onclick="toggleEquipment('2')">
+              <img src="/inc/img/triangle.svg">
+              <span>ECMO</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="equip3" class="stateDiv" onclick="toggleEquipment('3')">
+              <img src="/inc/img/circle.svg">
+              <span>Ventilation invasive</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="equip4" class="stateDiv" onclick="toggleEquipment('4')">
+              <img src="/inc/img/pentagone.svg">
+              <span>Ventilation non invasive</span>
+            </div>
+          </td>
+        </tr>
+       </table>
+
+       <button onclick="sendData()" class="w-100 mb-3 button">Sauvegarder</button>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+  </body>
+</html>

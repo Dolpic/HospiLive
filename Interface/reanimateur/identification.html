@@ -1,0 +1,109 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <style>
+      /*.EntreeCode{
+        width: 100vw;
+        height: 20vh;
+        font-size: 15vw;
+        line-height: 20vh;
+        color: #04052E;
+        font-weight: bold;
+        text-align: center;
+      }*/
+      .mainContainer{
+        margin-top:20vh;
+      }
+      #EntreeCode{
+        width: 94vw;
+        height: 90px;
+        font-size: 60px;
+        line-height: 20vh;
+        color: #04052E;
+        font-weight: bold;
+        text-align: center;
+        -webkit-appearance: none; 
+        -moz-appearance: textfield;
+      }
+      .submitButton{
+        width: 94vw;
+        height: 80px;
+        margin-top:10px;
+        font-size: 60px;
+        color: #04052E;
+        line-height: 0vh;
+      }
+      .Touche{
+        display: block;
+        width: 34vw;
+        height: 15vh;
+        font-size: 10vh;
+        color: #04052E;
+        text-align: center;
+      }
+      .Icon{
+        display: block;
+        width: 26vw;
+        height: 15vh;
+        padding-left: 8vw;
+        font-size: 5vh;
+        color: #04052E;
+        text-align: center;
+
+      }
+      .column {
+        float: left;
+        width: 34vw;
+      }
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+    </style>
+      {% include "../Interface/inc/head.html" %}
+      <title>Réanimateur Identification</title>
+      <script>
+        function submit(){
+          document.location.replace("reanimateur.html?UF="+$("#EntreeCode").val())
+        }
+      </script>
+  </head>
+  <body>
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Médecin réanimateur</h1>
+    </header>
+    <main>
+      <div class="mainContainer">
+        <input type="number" id="EntreeCode" placeholder="Entrez # UF" pattern="[0-9]*" ></div>
+        <button class="submitButton" onclick="submit()">Valider</button>
+      </div>
+      <!--<div class="EntreeCode">Entrez # UF</div>
+        <div class="row" style="background-color: white;">
+          <div class="column">
+            <p class="Touche">1</p>
+            <p class="Touche">4</p>
+            <p class="Touche">7</p>
+            <img class="Icon" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik03IDVoMTd2MTZoLTE3bC03LTcuOTcyIDctOC4wMjh6bTcgNi41ODZsLTIuNTg2LTIuNTg2LTEuNDE0IDEuNDE0IDIuNTg2IDIuNTg2LTIuNTg2IDIuNTg2IDEuNDE0IDEuNDE0IDIuNTg2LTIuNTg2IDIuNTg2IDIuNTg2IDEuNDE0LTEuNDE0LTIuNTg2LTIuNTg2IDIuNTg2LTIuNTg2LTEuNDE0LTEuNDE0LTIuNTg2IDIuNTg2eiIvPjwvc3ZnPg==">          </div>
+          <div class="column" >
+            <p class="Touche">2</p>
+            <p class="Touche">5</p>
+            <p class="Touche">8</p>
+            <p class="Touche">0</p>
+          </div>
+          <div class="column">
+            <p class="Touche">3</p>
+            <p class="Touche">6</p>
+            <p class="Touche">9</p>
+            <a href="./UFetNomCompletRea.html">
+              <img class="Icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTYgOHYtNGw4IDgtOCA4di00aC01di04aDV6bS03IDBoLTJ2OGgydi04em0tNC4wMTQgMGgtMS45ODZ2OGgxLjk4NnYtOHptLTMuOTg2IDBoLTF2OGgxdi04eiIvPjwvc3ZnPg==">
+            </a>
+          </div>
+        </div>-->
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+  </body>
+</html>

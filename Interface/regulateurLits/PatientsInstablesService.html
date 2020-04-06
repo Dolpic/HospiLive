@@ -1,0 +1,86 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Patients instables</title>
+    <style>
+      .ServiceNumber{
+        height: 20vh;
+        background-color: white;
+        color: var(--headercolor);
+        font-size: 500%;
+        text-align: center;
+        align-items: center;
+        line-height: 20vh;
+      }
+      .grille{
+        display: grid;
+        text-align: left;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: 30% 70%;
+        grid-template-rows: 20vh 20vh 20vh;
+        padding: 2vw;
+      }
+      .unstable1, .unstable2, .unstable3{
+        padding : 2vh;
+      }
+      .unstable1, #unstable1{
+        font-weight: bold;
+        color: var(--red-warning);
+      }
+      .unstable2, #unstable2{
+        font-size: 500%;
+        font-weight: bold;
+        color: var(--orange);
+      }
+      .unstable3, #unstable3{
+        font-size: 500%;
+        font-weight: bold;
+        color: var(--yellow-text);
+      }
+      
+    </style>
+    <script type="text/javascript">
+        var service = $_GET("Service");
+        RLunstablepatients(parseInt(service))
+        function PatientsInstablesDetails(Patients, service){
+          $(".ServiceNumber").text("UF " + service)
+          $("#unstable1").text(Patients.Patient[0])
+          $("#unstable2").text(Patients.Patient[1])
+          $("#unstable3").text(Patients.Patient[2])
+        }
+    </script>
+  </head>
+  <body>
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Patients instables</h1>
+    </header>
+    <main style="background-color: #cecece;">
+        <div class="ServiceNumber whiteArea">UF 0000</div>
+        <div class="whiteArea">
+          <div class="grille">
+            <div id="unstable1" style="font-size: 500%;">00</div>
+            <div class="unstable1" style="font-size: 150%;">
+              Patients a transférer dans l'heure
+            </div>
+            <div id="unstable2" style="font-size: 500%;">
+              00
+            </div>
+            <div class="unstable2" style="font-size: 150%;">
+              Patients a transférer dans la 1/2 journée
+            </div>
+            <div id="unstable3" style="font-size: 500%;">
+              00
+            </div>
+            <div class="unstable3" style="font-size: 150%;">
+              Patients qui se dégradent pas encore à tranférer
+            </div>
+          </div>
+        </div>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+  </body>
+</html>

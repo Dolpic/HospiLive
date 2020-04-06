@@ -1,0 +1,140 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Régulateur de lits</title>
+    <style>
+        #regulateur-row {
+            padding-top: 20px;
+            margin: 0px;
+            flex-direction: column;
+        }
+        .col-sm {
+            position: relative;
+            font-weight: bold;
+            margin-bottom: 4vh;
+        }
+       .categorie-name {
+            width: 100%;
+            text-align: left;
+            line-height: 6vh;
+            font-size: 3vh;
+            color: black;
+        }
+        .instable-patient-number{
+            text-align: left;
+            margin: none;
+            width: 30%;
+            line-height: 8vh;
+            font-size: 6vh;
+        }
+        #unstable1{
+            color: white;
+            color : var(--red-warning);
+        }
+        #unstable2{
+            color : var(--orange);
+        }
+        #unstable3{
+            color : var(--yellow-text);
+        }
+        .number {
+            text-align: left;
+            width: 90%;
+            line-height: 8vh;
+            font-size: 6vh;
+        }
+    </style>
+      <script type="text/javascript">
+        function init(){
+            RLglobalview();
+            RLgetVectors(function(result){
+                var sum = result.Helicopters + result.TGV + result.Cars + result.Planes + result.Boats
+                $("#vector-number").text(sum)
+            });
+        }
+
+        function RegulateurDeLitMainPage(patient_instables, patients_transferables, lits_disponibles){
+            $("#unstable1").text(patient_instables[0])
+            $("#unstable2").text(patient_instables[1])
+            $("#unstable3").text(patient_instables[2])
+            $("#transferables-number").text(patients_transferables[0])
+            $("#lits-number").text(lits_disponibles)
+        }       
+    </script>
+  </head>
+  <body onload="init()">
+    <header>
+        {% include "../Interface/inc/backArrow.html" %}
+        <h1>Régulateur de lit</h1>
+    </header>
+    <main>
+        <container class=".container" id="regulateur-container">
+            <div class="row" id="regulateur-row">
+                <a class="col-sm whiteArea clickable" href="tableTemplate.html">
+                    <div class="categorie-name">
+                        Patients instables
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col- instable-patient-number" id="unstable1">000</div>
+                            <div class="col- instable-patient-number" id="unstable2">000</div>
+                            <div class="col- instable-patient-number" id="unstable3">000</div>
+                            <div class="col-">
+                                <img src="/inc/img/smallRightArrow.svg">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="col-sm whiteArea clickable" href="./patientsTransferables.html">
+                    <div class="categorie-name">
+                        Patients Transférables
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col- number" id="transferables-number">
+                                00
+                            </div>
+                            <div class="col- ">
+                                <img src="/inc/img/smallRightArrow.svg">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="col-sm whiteArea clickable" href="litsDispo.html">
+                    <div class="categorie-name">
+                        Lits disponibles en réa
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col- number" id="lits-number">
+                                00
+                            </div>
+                            <div class="col-">
+                                <img src="/inc/img/smallRightArrow.svg">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="col-sm whiteArea clickable" href="vecteursTransports.html">
+                    <div class="categorie-name">
+                        Vecteurs à disposition
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col- number" id="vector-number">
+                                00
+                            </div>
+                            <div class="col-">
+                                <img src="/inc/img/smallRightArrow.svg">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </container>
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+  </body>
+</html>

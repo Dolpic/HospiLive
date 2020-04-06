@@ -1,0 +1,108 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Vecteurs à disposition</title>
+    <style>
+      .grid{
+        display: grid;
+        grid-template-columns: 70vw 30vw;
+        grid-template-rows: 10vh;
+        justify-content: center;
+        align-items: center;
+      }
+      .Vecteurs{
+        font-size: 8vw;
+        font-weight: bold;
+        text-align: center;
+        color: var(--headercolor);
+      }
+      .Menu{
+        font-size: 6vw;
+        font-weight: bold;
+        color: var(--headercolor);
+      }
+    </style>
+    <script>
+      function init(){
+        RLgetVectors(function(result){
+          $("#nombreHelico").text(result.Helicopters)
+          $("#nombreTGV").text(result.TGV)
+          $("#nombreVoiture").text(result.Cars)
+          $("#nombreAvion").text(result.Planes)
+          $("#nombreBateau").text(result.Boats)
+        })
+      }
+    </script>
+    <title>Vecteurs à disposition</title>
+  </head>
+  <body onload="init()">
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Vecteurs à disposition</h1>
+    </header>
+    <main>
+      <div class="blueTitle" style="font-size: 6vw;">Places disponibles en :</div>
+      <hr/>
+      <div class="whiteArea">
+        <div class="grid">
+          <div class="Vecteurs">Helicoptère</div>
+          <div class="Menu">
+            <!--<input type="number" id="nombreHelico" value="24" style="width: 15vw"></input>-->
+            <div id="nombreHelico">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="whiteArea">
+        <div class="grid">
+          <div class="Vecteurs">TGV</div>
+          <div class="Menu">
+            <!--<input type="number" id="nombreTGV" value="44" style="width: 15vw"></input>-->
+            <div id="nombreTGV">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="whiteArea">
+        <div class="grid">
+          <div class="Vecteurs">Voiture</div>
+          <div class="Menu">
+            <!--<input type="number" id="nombreVoiture" value="5" style="width: 15vw"></input>-->
+            <div id="nombreVoiture">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="whiteArea">
+        <div class="grid">
+          <div class="Vecteurs">Avion</div>
+          <div class="Menu">
+            <!--<input type="number" id="nombreAvion" value="4" style="width: 15vw"></input>-->
+            <div id="nombreAvion">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="whiteArea">
+        <div class="grid">
+          <div class="Vecteurs">Bateau</div>
+          <div class="Menu">
+            <!--<input type="number" id="nombreBateau" value="0" style="width: 15vw"></input>-->
+            <div id="nombreBateau">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+</body>
+</html>

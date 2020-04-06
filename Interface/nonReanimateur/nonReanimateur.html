@@ -1,0 +1,185 @@
+{% set TO_ROOT = "/../" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "../Interface/inc/head.html" %}
+    <title>Medecin non réanimateur</title>
+    <style>
+        .button {
+          display: block;
+          width: 100vm;
+          background-color: white;
+          border: none;
+          padding: 15px 25px;
+          text-align: left;
+          cursor: pointer;
+        }
+        .NonRea-header{
+          height: 10vh;
+          font-size: 2.5vh;
+          font-weight: bold;
+          margin-left: 4%;
+          line-height: 10vh;
+          text-align: left;
+          color: var(--roomtext);
+        }
+        .grid-container {
+          display: grid;
+          grid-column-gap: 2%;
+          grid-template-columns: 34% 28% 34%;
+          grid-template-rows: 3vh 4.5vh 4.5vh;
+          padding: 2%;
+        }
+        .rooms{
+          color : var(--roomtext)
+        }
+        .whiteArea{
+          font-weight: bold;
+          vertical-align: center;
+        }
+        .rooms-room-number{
+          grid-row-start: 2;
+          grid-row-end: 3;
+          grid-row-start: 2;
+          grid-row-end: 4;
+          font-size: 300%;
+          text-align : center;
+          color: green;
+          width:34%;
+        }
+        .rooms-text{
+          grid-column-start: 1;
+          grid-column-end: 2;
+          grid-row-start: 2;
+          grid-row-end: 4;
+          font-size : 3vh;
+          width:33%;
+          padding-left: 15px;
+        }
+        .rooms-shift-number{
+          width: 50%;
+          grid-column-start: 1;
+          grid-column-end: 3;
+          font-size: 150%;
+          padding-left: 15px;
+          padding-top: 9px;
+        }
+        .rooms-phone{
+          grid-row-start: 3;
+          grid-row-end: 4;
+          grid-column-start: 3;
+          grid-column-end: 4;
+          font-size: 150%;
+          text-align: center;
+          width:33%;
+        }
+        .icons {
+          width: 50%;
+          padding-top: 9px;
+        }
+        .textButton{
+          font-size: 7vw;
+          width:84%;
+          color:#04052E;
+          font-weight: bold;
+          text-align: center;
+        }
+        .searchBar{
+          font-size:25px;
+        }
+    </style>
+    <script type="text/javascript">
+      MNfreebeds();
+      function FreedBedsNonReaminators(beds){
+        beds.forEach(function(service){
+          $("#LitDisponibleTemplate .rooms-shift-number").text("UF " + service.Service);
+          $("#LitDisponibleTemplate .rooms-phone").text(service.Phone);
+          $("#LitDisponibleTemplate .rooms-room-number").text(service.FreeBeds);
+          $("#LitDisponibleTemplate .icon").hide();
+          service.Equipment.forEach(function(Equipment){
+            switch(Equipment) {
+              case 1:
+                $("#LitDisponibleTemplate .square").show();
+                break;
+              case 2:
+                $("#LitDisponibleTemplate .triangle").show();
+                break;
+              case 3:
+                $("#LitDisponibleTemplate .circle").show();
+                break;
+              case 4:
+                $("#LitDisponibleTemplate .pentagone").show();
+                break;
+              default:
+                break;
+            }
+          });
+          template = $("#LitDisponibleTemplate").clone();
+          template.attr("style", "");
+          template.attr("id", "");
+          template.attr("href", "details.html?UF="+service.Service);
+          $("main").append(template);
+        })
+    }
+    </script>
+  </head>
+  <body>
+    <header>
+      {% include "../Interface/inc/backArrow.html" %}
+      <h1>Médecin non réanimateur</h1>
+    </header>
+    <main>
+      <div class="whiteArea">
+        <a href="./patientsRepertories.html">
+          <table class="clickable">
+            <tbody>
+              <tr>
+                <td class="textButton">
+                  Déclarer/Modifier mes patients
+                </td>
+                <td style="text-align:center;">
+                  <img src="/inc/img/plus.svg">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </a>
+      </div>
+
+      <div class="blueTitle w-100">Lits disponibles en réa</div>
+      <div class="blueTitleBorder"></div>
+
+      <a id="LitDisponibleTemplate" style="display: none">
+        <table class="whiteArea clickable">
+          <tr>
+            <td colspan="2" class="rooms-shift-number">
+              UF0000
+            </td>
+            <td class="icons">
+              <img src="/inc/img/square.svg" class="icon square">
+              <img src="/inc/img/triangle.svg" class="icon triangle">
+              <img src="/inc/img/circle.svg" class="icon circle">
+              <img src="/inc/img/pentagone.svg" class="icon pentagone">
+            </td>
+            <td rowspan="2">
+              <img src="/inc/img/smallRightArrow.svg">
+            </td>
+          </tr>
+          <tr>
+            <td class="rooms-text">
+              Lits libres
+            </td>
+            <td class="rooms-room-number">
+              00
+            </td>
+            <td class="rooms-phone">
+              00000
+            </td>
+          </tr>
+        </table>
+      </a>
+
+    </main>
+    {% include "../Interface/inc/bottomScripts.html" %}
+    </body>
+</html>
